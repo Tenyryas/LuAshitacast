@@ -2,6 +2,7 @@ local profile = {};
 
 local varhelper = gFunc.LoadFile('common/varhelper.lua');
 local expwarp = gFunc.LoadFile('common/expwarphelper.lua');
+local common = gFunc.LoadFile('common/commonfunc.lua');
 
 local macros = require 'ffxi.macros';
 
@@ -15,20 +16,6 @@ local jse = {
     ['Relic'] = { Head = 'Pitre Taj', Body = 'Pitre Tobe +1', Hands = 'Pitre Dastanas', Legs = 'Pitre Churidars', Feet = 'Pitre Babouches' },
     ['Empy'] = { Head = 'Karagoz Cappello', Body = 'Karagoz Farsetto', Hands = 'Karagoz Guanti', Legs = 'Cirque Pantaloni +1', Feet = 'Cirque Scarpe +1'}
 }
-
-local function CheckCape()
-    local target = gData.GetTarget();
-    if (target ~= nil) and (target.HPP <= 5) then
-        gFunc.Equip("Back", capes.EXP);
-    end
-end
-
-local function Schneddick()
-    local player = gData.GetPlayer();
-    if (player.Status ~= "Engaged" and player.IsMoving) then
-        gFunc.Equip("Ring2", "Shneddick Ring");
-    end
-end
 
 local sets = {
     ['Idle'] = {
