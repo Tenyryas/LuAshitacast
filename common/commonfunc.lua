@@ -12,6 +12,24 @@ Schneddick = function ()
     end
 end
 
+IsInTown = function()
+    local env = gData.GetEnvironment();
+
+    local towns = {
+        'Port Bastok','Bastok Mines','Bastok Markets','Metalworks',
+        'Northern San d\'Oria','Southern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille',
+        'Heavens Tower','Windurst Walls','Windurst Woods','Windurst Waters',
+        'Port Jeuno','Lower Jeuno','Upper Jeuno','Ru\'Lude Gardens'
+    };    
+    for k,v in pairs(towns) do
+        if v == env.Area then
+            return true;
+        end
+    end
+    
+    return false;
+end
+
 function isTwoHanded(itemName)
 
     if(itemName) == nil then return end
