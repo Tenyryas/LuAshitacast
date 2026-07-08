@@ -10,15 +10,30 @@ local capes = {
     ['EXP'] = { Name = 'Mecisto. Mantle', Augment = { [1] = 'Cap. Point+37%', [2] = 'CHR+1', [3] = 'DEF+1', [4] = 'Mag. Acc.+3' } },
 }
 
-local jse = {
-    ['AF'] = { Head = 'Laksa. Tricorne +1', Body = 'Laksa. Frac +1', Hands = '', Legs = 'Laksa. Trews +3', Feet = '' },
-    ['Relic'] = { Head = 'Lanun Tricorne +1', Body = 'Lanun Frac +3', Hands = 'Lanun Gants +1', Legs = 'Lanun Trews +1', Feet = 'Lanun Bottes +2' },
-    ['Empy'] = { Head = 'Chass. Tricorne +1', Body = 'Chasseur\'s Frac +2', Hands = 'Chasseur\'s Gants +2', Legs = 'Chas. Culottes +2', Feet = 'Chass. Bottes +1'}
+local jse = T{
+    AF = { 
+        Head = 'Laksa. Tricorne +1', 
+        Body = 'Laksa. Frac +4', 
+        Hands = '', 
+        Legs = 'Laksa. Trews +3', 
+        Feet = '' },
+    Relic = { 
+        Head = 'Lanun Tricorne +2', 
+        Body = 'Lanun Frac +3', 
+        Hands = 'Lanun Gants +2', 
+        Legs = 'Lanun Trews +2', 
+        Feet = 'Lanun Bottes +2' },
+    Empy = { 
+        Head = 'Chass. Tricorne +2', 
+        Body = 'Chasseur\'s Frac +2', 
+        Hands = 'Chasseur\'s Gants +2', 
+        Legs = 'Chas. Culottes +2', 
+        Feet = 'Chass. Bottes +2'}
 }
 
 
-local sets = {
-    ['Idle'] = {
+local sets = T{
+    Idle = {
         Range = 'Fomalhaut',
         Head = 'Malignance Chapeau',
         Neck = 'Sanctity Necklace',
@@ -33,7 +48,7 @@ local sets = {
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
-    ['DT'] = {
+    DT = {
         Head = 'Malignance Chapeau',
         Neck = 'Sanctity Necklace',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
@@ -47,46 +62,74 @@ local sets = {
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
-    ['TP'] = {
+    TP = {
         Head = 'Malignance Chapeau',
-        Neck = 'Asperity Necklace',
-        Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
-        Ear2 = 'Cessance Earring',
+        Neck = 'Iskur Gorget',
+        Ear1 = 'Suppanomimi',
+        Ear2 = 'Eabani Earring',
         Body = 'Malignance Tabard',
         Hands = 'Adhemar Wristbands',
         Ring1 = { Name = 'Murky Ring', AugPath='A' },
         Ring2 = 'Petrov Ring',
         Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
+        Legs = jse.Empy.Legs,
+        Feet = jse.Empy.Feet,
     },
-    ['TH'] = {
+    TH = {
         Ammo = 'Per. Lucky Egg',
         Head = 'Wh. Rarab Cap +1',
         Waist = 'Chaac Belt',
     },
-    ['Roll'] = {
+    Roll = {
         -- Range = 'Compensator',
         Head =  jse.Relic.Head,
         Ring1 = 'Barataria Ring',
         Ring2 = "Luzaf's Ring",
     },
-    ['LeadenSalute'] = {
+    LeadenSalute = {
         Head = 'Nyame Helm',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Commodore Charm +2',
         Ear1 = 'Moonshade Earring',
-        Ear2 = 'Hecate\'s Earring',
+        Ear2 = 'Friomisi Earring',
         Body = jse.Relic.Body,
         Hands = 'Nyame Gauntlets',
         Ring1 = "Archon Ring",
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Dingir Ring',
         Back = 'Gunslinger\'s Cape',
         Waist = 'Eschan Stone',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
-    ['LastStand'] = {
+    HotShot = {
+        Head = 'Nyame Helm',
+        Neck = 'Commodore Charm +2',
+        Ear1 = 'Moonshade Earring',
+        Ear2 = 'Friomisi Earring',
+        Body = jse.AF.Body,
+        Hands = jse.Empy.Hands,
+        Ring1 = "Archon Ring",
+        Ring2 = 'Dingir Ring',
+        Back = 'Gunslinger\'s Cape',
+        Waist = 'Fotia Belt',
+        Legs = 'Nyame Flanchard',
+        Feet = jse.Relic.Feet,
+    },
+    Wildfire = {
+        Head = 'Nyame Helm',
+        Neck = 'Commodore Charm +2',
+        Ear1 = 'Moonshade Earring',
+        Ear2 = 'Hecate\'s Earring',
+        Body = jse.Relic.Body,
+        Hands = jse.Empy.Hands,
+        Ring1 = "Archon Ring",
+        Ring2 = 'Dingir Ring',
+        Back = 'Gunslinger\'s Cape',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = jse.Relic.Feet,
+    },
+    LastStand = {
         Head = jse.Relic.Head,
         Neck = 'Sanctity Necklace',
         Ear1 = 'Moonshade Earring',
@@ -94,18 +137,17 @@ local sets = {
         Body = jse.AF.Body,
         Hands = 'Meg. Gloves +2',
         Ring1 = "Regal Ring",
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Dingir Ring',
         Back = 'Gunslinger\'s Cape',
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
-    ['Aeolian'] = {
+    Aeolian = {
         Head = 'Nyame Helm',
         Neck = 'Sanctity Necklace',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'TP Bonus +250', [2] = '"Mag. Atk. Bns."+4' } },
         Ear2 = 'Friomisi Earring',
-        Body = { Name = 'Lanun Frac +2', AugTrial=5378 },
         Body = jse.Relic.Body,
         Ring1 = 'Regal Ring',
         Ring2 = 'Petrov Ring',
@@ -114,21 +156,22 @@ local sets = {
         Legs = jse.AF.Legs,
         Feet = jse.Empy.Feet,
     },
-    ['preshot'] = {
+    preshot = {
         Head = jse.Empy.Head,
-        Neck = 'Commodore Charm',
+        Neck = 'Commodore Charm +2',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
         Ear2 = 'Enervating Earring',
         Body = jse.AF.Body,
+        -- Body = 'Oshosi Vest',
         Hands = jse.Relic.Hands,
         Ring1 = 'Regal Ring',
-        Ring2 = 'Dragon Ring',
+        Ring2 = 'Dingir Ring',
         Back = 'Camulus\'s mantle',
         Waist = 'Eschan Stone',
         Legs = jse.AF.Legs,
         Feet = 'Meg. Jam. +2',
     },
-    ['midshot'] = {
+    midshot = {
         Head = 'Malignance Chapeau',
         Neck = 'Commodore Charm',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
@@ -136,29 +179,29 @@ local sets = {
         Body = jse.Empy.Body,
         Hands = jse.Empy.Hands,
         Ring1 = 'Regal Ring',
-        Ring2 = 'Dragon Ring',
+        Ring2 = 'Dingir Ring',
         Back = { Name = 'Gunslinger\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'Enmity-2' } },
         Waist = 'Eschan Stone',
         Legs = jse.Empy.Legs,
-        Feet = 'Meg. Jam. +2',
+        Feet = jse.Empy.Feet,
     },
-    ['qdraw'] = {
+    qdraw = {
         Head = 'Nyame Helm',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Iskur Gorget',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Hecate\'s Earring',
         Body = jse.Relic.Body,
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Etana Ring',
+        Ring2 = 'Dingir Ring',
         Back = { Name = 'Gunslinger\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'Enmity-2' } },
         Waist = 'Eschan Stone',
         Legs = jse.AF.Legs,
         Feet = jse.Empy.Feet,
     },
-    ['SavBlade'] = {
+    SavBlade = {
         Head = 'Meghanada Visor +2',
-        Neck = 'Asperity Necklace',
+        Neck = 'Rep. Plat. Medal',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Ishvara Earring',
         Body = jse.AF.Body,
@@ -168,8 +211,13 @@ local sets = {
         Back = 'Camulus\'s mantle',
         Waist = 'Sailfi Belt +1',
         Legs = 'Meg. Chausses +2',
-        Feet = jse.Empy.Feet,
-    }
+        Feet = jse.AF.Feet,
+    },
+    tripleShot = {
+        Body = jse.Empy.Body,
+        -- Hands = jse.Relic.Hands,
+        -- Legs = 'Oshosi Trousers',
+    },
 
 }
 profile.Sets = sets;
@@ -180,16 +228,21 @@ profile.Packer = {
 local actions = {
     ['Savage Blade'] = sets.SavBlade,
     ['Leaden Salute'] = sets.LeadenSalute,
-    ['Hot Shot'] = sets.LeadenSalute,
+    ['Hot Shot'] = sets.HotShot,
+    ['Wildfire'] = sets.Wildfire,
     ['Last Stand'] = sets.LastStand,
     ['Aeolian Edge'] = sets.Aeolian,
 };
+
+local player = gData.GetPlayer();
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
 
     varhelper.Initialize();
     expwarp.Initialize(varhelper);
+
+    macros.set_book(0);
 
     varhelper.CreateCycle('DT', {
         [1] = 'Off',
@@ -318,6 +371,16 @@ profile.HandleAbility = function()
         end
     end
 
+    if (action.Name == 'Fold') then
+        gFunc.Equip('Hands', jse.Relic.Hands);
+    end
+    if (action.Name == 'Snake Eye') then
+        gFunc.Equip('Legs', jse.Relic.Legs);
+    end
+    if (action.Name == 'Wild Card') then
+        gFunc.Equip('Feet', jse.Relic.Feet);
+    end
+
     if (action.Name:contains('Shot') and not action.Name:contains('Triple')) then
         gFunc.EquipSet(sets.qdraw);
     end
@@ -333,11 +396,17 @@ profile.HandleMidcast = function()
 end
 
 profile.HandlePreshot = function()
-    gFunc.EquipSet(sets.preshot)
+    gFunc.EquipSet(sets.preshot);
 end
 
 profile.HandleMidshot = function()
-    gFunc.EquipSet(sets.midshot)
+    local action = gData.GetAction();
+    gFunc.EquipSet(sets.midshot);
+
+
+    if (action.ActionType == "Ranged" and gData.GetBuffCount('Triple Shot') > 0) then
+        gFunc.EquipSet(sets.tripleShot);
+    end
 end
 
 profile.HandleWeaponskill = function()

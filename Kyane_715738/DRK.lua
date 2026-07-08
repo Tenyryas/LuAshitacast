@@ -13,16 +13,47 @@ local capes = {
     ['EXP'] = { Name = 'Mecisto. Mantle', Augment = { [1] = 'Cap. Point+37%', [2] = 'CHR+1', [3] = 'DEF+1', [4] = 'Mag. Acc.+3' } },
 }
 
-local jse = {
-    ['AF'] = { Head = 'Ignominy Burgeonet', Body = 'Ig. Cuirass +4', Hands = '', Legs = 'Ig. Flanchard +3', Feet = '' },
-    ['Relic'] = { Head = 'Fall. Burgeonet +3', Body = 'Fall. Cuirass +3', Hands = 'Fall. Fin. Gaunt.', Legs = 'Fall. Flanchard +4', Feet = '' },
-    ['Empy'] = { Head = '', Body = '', Hands = '', Legs = '', Feet = 'Heath. Sollerets +1'}
+local jse = T{
+    AF = { 
+        Head = 'Ignominy Burgeonet', 
+        Body = 'Ig. Cuirass +4', 
+        Hands = '', 
+        Legs = 'Ig. Flanchard +3', 
+        Feet = '' },
+    Relic = { 
+        Head = 'Fall. Burgeonet +3',
+        Body = 'Fall. Cuirass +3',
+        Hands = 'Fall. Fin. Gaunt.',
+        Legs = 'Fall. Flanchard +4',
+        Feet = '' },
+    Empy = { 
+        Head = '',
+        Body = '',
+        Hands = '',
+        Legs = '',
+        Feet = 'Heath. Sollerets +1'
+    }
 }
 
 local main;
 
-local sets = {
-    ['Idle'] = {
+local sets = T{
+    Idle = {
+        Ammo = 'Seeth. Bomblet +1',
+        Head = 'Flam. Zucchetto +2',
+        Neck = 'Elite Royal Collar',
+        Ear1 = 'Alabaster Earring',
+        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
+        Body = 'Sakpata\'s Plate',
+        Hands = 'Sakpata\'s Gauntlets',
+        Ring1 = 'Murky Ring',
+        Ring2 = 'Petrov Ring',
+        Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
+        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+        Legs = 'Sakpata\'s Cuisses',
+        Feet = 'Flam. Gambieras +2',
+    },
+    PDT = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
@@ -37,22 +68,7 @@ local sets = {
         Legs = 'Sakpata\'s Cuisses',
         Feet = 'Flam. Gambieras +2',
     },
-    ['PDT'] = {
-        Ammo = 'Seeth. Bomblet +1',
-        Head = 'Flam. Zucchetto +2',
-        Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
-        Ear1 = 'Alabaster Earring',
-        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
-        Body = 'Sakpata\'s Plate',
-        Hands = 'Sakpata\'s Gauntlets',
-        Ring1 = 'Murky Ring',
-        Ring2 = 'Petrov Ring',
-        Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Sakpata\'s Cuisses',
-        Feet = 'Flam. Gambieras +2',
-    },
-    ['TP'] = {
+    TP = {
         Ammo = 'Coiste Bodhar',
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
@@ -67,7 +83,7 @@ local sets = {
         Legs = 'Sakpata\'s Cuisses',
         Feet = 'Flam. Gambieras +2',
     },
-    ['DefaultWeaponskill'] = {
+    DefaultWeaponskill = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
@@ -82,7 +98,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = 'Sulev. Leggings +2',
     },
-    ['CrossReaper'] = {
+    CrossReaper = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
@@ -97,7 +113,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = 'Sulev. Leggings +2',
     },
-    ['FotiaWS'] = {
+    FotiaWS = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Flam. Zucchetto +2',
         Neck = 'Abyssal Beads +1',
@@ -112,7 +128,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = 'Sulev. Leggings +2',
     },
-    ['Torcleaver'] = {
+    Torcleaver = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
@@ -127,7 +143,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = 'Sulev. Leggings +2',
     },
-    ['Drain'] = {
+    Drain = {
         Ammo = 'Seeth. Bomblet +1',
         Head = jse.Relic.Head,
         Neck = 'Sanctity Necklace',
@@ -142,7 +158,7 @@ local sets = {
         Legs = { Name = 'Eschite Cuisses', AugPath='D' },
         Feet = 'Ratri Sollerets',
     },
-    ['Stun'] = {
+    Stun = {
         Ammo = 'Seeth. Bomblet +1',
         Head = jse.Relic.Head,
         Neck = 'Sanctity Necklace',
@@ -157,7 +173,7 @@ local sets = {
         Legs = { Name = 'Eschite Cuisses', AugPath='D' },
         Feet = 'Ratri Sollerets',
     },
-    ['DreadSpikes'] = {
+    DreadSpikes = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = 'Sanctity Necklace',
@@ -172,22 +188,22 @@ local sets = {
         Legs = { Name = 'Eschite Cuisses', AugPath='D' },
         Feet = 'Ratri Sollerets',
     },
-    ['FC'] = {
+    FC = {
         Ammo = 'Seeth. Bomblet +1',
         Head = jse.Relic.Head,
         Neck = 'Sanctity Necklace',
         Ear1 = 'Etiolation Earring',
-        Ear2 = 'Hecate\'s Earring',
+        Ear2 = 'Malignance Earring',
         Body = jse.Relic.Body,
         Hands = jse.Relic.Hands,
-        Ring1 = 'Etana Ring',
+        Ring1 = 'Kishar Ring',
         Ring2 = 'Mujin Band',
         Back = { Name = 'Niht Mantle', Augment = { [1] = 'Dark magic skill +10', [2] = 'Attack+10', [3] = '"Drain" and "Aspir" potency +17' } },
         Waist = 'Eschan Stone',
         Legs = { Name = 'Eschite Cuisses', AugPath='D' },
         Feet = 'Flam. Gambieras +2',
     },
-    ['SavBlade'] = {
+    SavBlade = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
@@ -202,12 +218,12 @@ local sets = {
         Legs = { Name = 'Fall. Flanchard +4', AugTrial=5633 },
         Feet = 'Sulev. Leggings +2',
     },
-    ['TH'] = {
+    TH = {
         Ammo = 'Per. Lucky Egg',
         Head = 'Wh. Rarab Cap +1',
         Waist = 'Chaac Belt',
     },
-    ['DTacc'] = {
+    DTacc = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Sulevia\'s Mask +2',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
@@ -222,7 +238,7 @@ local sets = {
         Legs = 'Sulev. Cuisses +2',
         Feet = 'Sulev. Leggings +2',
     },
-    ['Catastrophe'] = {
+    Catastrophe = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
@@ -237,7 +253,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = 'Sulev. Leggings +2',
     },
-    ['Shockwave'] = {
+    Shockwave = {
         Ammo = 'Seeth. Bomblet +1',
         Head = jse.Relic.Head,
         Neck = 'Abyssal Beads +1',
@@ -252,7 +268,7 @@ local sets = {
         Legs = jse.Relic.Legs,
         Feet = "Sulev. Leggings +2",
     },
-    ['Lockstyle'] = {
+    Lockstyle = {
         Main = 'Beorc Sword',
         Sub = 'Umbra Strap',
         Head = 'Eyepatch',
@@ -261,7 +277,7 @@ local sets = {
         Legs = 'Bellicus cuisses',
         Feet = 'Bellicus sabatons',
     },
-    ['TownIdle'] = {
+    TownIdle = {
         Ammo = 'Coiste Bodhar',
         Head = { Name = 'Fall. Burgeonet +3', AugTrial=5457 },
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
@@ -298,12 +314,20 @@ profile.Packer = {
     { Name = 'Silent Oil', Quantity = 12 }
 };
 
+local player = gData.GetPlayer();
+
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
 
     varhelper.Initialize();
     expwarp.Initialize(varhelper);
+
+    if (player.SubJob == ("SAM")) then
+        macros.set_book(4);
+    elseif (player.SubJob == ("RUN")) then
+        macros.set_book(5);
+    end
 
     varhelper.CreateCycle('DT', {
         [1] = 'Off',
@@ -361,7 +385,6 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    local player = gData.GetPlayer();
     local equip = gData.GetEquipment();
 
 
@@ -369,12 +392,6 @@ profile.HandleDefault = function()
         if (isTwoHanded(equip.Main.Name) and equip.Sub == nil) then
             gFunc.Equip('Sub', 'Kaja Grip');
         end
-    end
-
-    if (player.SubJob == ("SAM")) then
-        macros.set_book(4);
-    elseif (player.SubJob == ("RUN")) then
-        macros.set_book(5);
     end
 
     if (player.Status == 'Engaged') then
