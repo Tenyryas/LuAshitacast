@@ -6,31 +6,69 @@ local common = gFunc.LoadFile('common/commonfunc.lua');
 
 local macros = require 'ffxi.macros';
 
-local capes = {
-    ['EXP'] = { Name = 'Mecisto. Mantle', Augment = { [1] = 'Cap. Point+37%', [2] = 'CHR+1', [3] = 'DEF+1', [4] = 'Mag. Acc.+3' } },
+local capes = T{
+    MagWS = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Magic Damage+20', [3] = 'AGI+30', [4] = 'Mag. Acc.+20' } },
+    MeleeTP = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+27', [4] = 'Attack+20', [5] = 'DEX+20' } },
+    Midshot = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Rng.Acc.+30', [3] = 'AGI+20', [4] = '"Store TP"+10', [5] = 'Rng.Atk.+20' } },
+    EXP = { Name = 'Mecisto. Mantle', Augment = { [1] = 'Cap. Point+37%', [2] = 'CHR+1', [3] = 'DEF+1', [4] = 'Mag. Acc.+3' } },
 }
 
 local jse = T{
-    AF = { 
-        Head = 'Laksa. Tricorne +1', 
-        Body = 'Laksa. Frac +4', 
-        Hands = '', 
-        Legs = 'Laksa. Trews +3', 
-        Feet = '' },
-    Relic = { 
-        Head = 'Lanun Tricorne +2', 
-        Body = 'Lanun Frac +3', 
-        Hands = 'Lanun Gants +2', 
-        Legs = 'Lanun Trews +2', 
-        Feet = 'Lanun Bottes +2' },
-    Empy = { 
-        Head = 'Chass. Tricorne +2', 
-        Body = 'Chasseur\'s Frac +2', 
-        Hands = 'Chasseur\'s Gants +2', 
-        Legs = 'Chas. Culottes +2', 
-        Feet = 'Chass. Bottes +2'}
+    AF = {
+        Head = 'Laksa. Tricorne +3',
+        Body = 'Laksa. Frac +4',
+        Hands = '',
+        Legs = 'Laksa. Trews +3',
+        Feet = ''
+    },
+    Relic = {
+        Head = 'Lanun Tricorne +2',
+        Body = 'Lanun Frac +4',
+        Hands = 'Lanun Gants +4',
+        Legs = 'Lanun Trews +2',
+        Feet = 'Lanun Bottes +4'
+    },
+    Empy = {
+        Head = 'Chass. Tricorne +2',
+        Body = 'Chasseur\'s Frac +2',
+        Hands = 'Chasseur\'s Gants +3',
+        Legs = 'Chas. Culottes +2',
+        Feet = 'Chass. Bottes +2'
+    }
 }
 
+local weapons = T{
+    LanunRoll = { Name = 'Lanun Knife', AugPath='C' },
+    Fomalhaut = 'Fomalhaut',
+    Compensator = 'Compensator',
+    Daduchos = 'Daduchos Saber',
+    Tauret = 'Tauret',
+    Naegling = 'Naegling',
+    Nusku = 'Nusku Shield'
+}
+
+local wsets = T{
+    M_DaggerDW = T{
+        Main = weapons.Tauret,
+        Sub = weapons.Daduchos
+    },
+    LM_DaggerDW = T{
+        Main = weapons.LanunRoll,
+        Sub = weapons.Daduchos
+    },
+    M_SwordDW = T{
+        Main = weapons.Naegling,
+        Sub = weapons.Daduchos
+    },
+    Naegling = T{
+        Main = weapons.Naegling,
+        Sub = weapons.Nusku
+    },
+    Lanun = T{
+        Main = weapons.LanunRoll,
+        Sub = weapons.Nusku
+    },
+}
 
 local sets = T{
     Idle = {
@@ -43,7 +81,7 @@ local sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = { Name = 'Murky Ring', AugPath='A' },
         Ring2 = 'Petrov Ring',
-        Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },
+        Back = capes.MeleeTP,
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -57,7 +95,7 @@ local sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = { Name = 'Murky Ring', AugPath='A' },
         Ring2 = 'Petrov Ring',
-        Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },
+        Back = capes.MeleeTP,
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -71,7 +109,7 @@ local sets = T{
         Hands = 'Adhemar Wristbands',
         Ring1 = { Name = 'Murky Ring', AugPath='A' },
         Ring2 = 'Petrov Ring',
-        Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },
+        Back = capes.MeleeTP,
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = jse.Empy.Legs,
         Feet = jse.Empy.Feet,
@@ -82,49 +120,50 @@ local sets = T{
         Waist = 'Chaac Belt',
     },
     Roll = {
-        -- Range = 'Compensator',
+        Main = weapons.LanunRoll,
+        Range = weapons.Compensator,
         Head =  jse.Relic.Head,
-        Ring1 = 'Barataria Ring',
-        Ring2 = "Luzaf's Ring",
+        Hands = jse.Empy.Hands,
+        Ring1 = "Luzaf's Ring",
     },
     LeadenSalute = {
-        Head = 'Nyame Helm',
-        Neck = 'Commodore Charm +2',
+        Head = 'Pixie Hairpin +1',
+        Neck = 'Comm. Charm +2',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Friomisi Earring',
         Body = jse.Relic.Body,
-        Hands = 'Nyame Gauntlets',
+        Hands = jse.Empy.Hands,
         Ring1 = "Archon Ring",
         Ring2 = 'Dingir Ring',
-        Back = 'Gunslinger\'s Cape',
+        Back = capes.MagWS,
         Waist = 'Eschan Stone',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
     HotShot = {
         Head = 'Nyame Helm',
-        Neck = 'Commodore Charm +2',
+        Neck = 'Comm. Charm +2',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Friomisi Earring',
         Body = jse.AF.Body,
         Hands = jse.Empy.Hands,
         Ring1 = "Archon Ring",
         Ring2 = 'Dingir Ring',
-        Back = 'Gunslinger\'s Cape',
+        Back = capes.MagWS,
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
     Wildfire = {
         Head = 'Nyame Helm',
-        Neck = 'Commodore Charm +2',
+        Neck = 'Comm. Charm +2',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Hecate\'s Earring',
         Body = jse.Relic.Body,
         Hands = jse.Empy.Hands,
         Ring1 = "Archon Ring",
         Ring2 = 'Dingir Ring',
-        Back = 'Gunslinger\'s Cape',
+        Back = capes.MagWS,
         Waist = 'Eschan Stone',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
@@ -135,34 +174,34 @@ local sets = T{
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Ishvara Earring',
         Body = jse.AF.Body,
-        Hands = 'Meg. Gloves +2',
+        Hands = jse.Empy.Hands,
         Ring1 = "Regal Ring",
         Ring2 = 'Dingir Ring',
-        Back = 'Gunslinger\'s Cape',
+        Back = capes.Midshot,
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
     Aeolian = {
         Head = 'Nyame Helm',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Comm. Charm +2',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'TP Bonus +250', [2] = '"Mag. Atk. Bns."+4' } },
         Ear2 = 'Friomisi Earring',
         Body = jse.Relic.Body,
+        Hands = jse.Empy.Hands,
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
-        Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },
+        Ring2 = 'Dingir Ring',
+        Back = capes.MagWS,
         Waist = 'Eschan Stone',
         Legs = jse.AF.Legs,
-        Feet = jse.Empy.Feet,
+        Feet = jse.Relic.Feet,
     },
     preshot = {
         Head = jse.Empy.Head,
-        Neck = 'Commodore Charm +2',
+        Neck = 'Comm. Charm +2',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
         Ear2 = 'Enervating Earring',
         Body = jse.AF.Body,
-        -- Body = 'Oshosi Vest',
         Hands = jse.Relic.Hands,
         Ring1 = 'Regal Ring',
         Ring2 = 'Dingir Ring',
@@ -173,14 +212,14 @@ local sets = T{
     },
     midshot = {
         Head = 'Malignance Chapeau',
-        Neck = 'Commodore Charm',
+        Neck = 'Comm. Charm +2',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
         Ear2 = 'Enervating Earring',
         Body = jse.Empy.Body,
         Hands = jse.Empy.Hands,
         Ring1 = 'Regal Ring',
         Ring2 = 'Dingir Ring',
-        Back = { Name = 'Gunslinger\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'Enmity-2' } },
+        Back = capes.Midshot,
         Waist = 'Eschan Stone',
         Legs = jse.Empy.Legs,
         Feet = jse.Empy.Feet,
@@ -194,7 +233,7 @@ local sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Regal Ring',
         Ring2 = 'Dingir Ring',
-        Back = { Name = 'Gunslinger\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'Enmity-2' } },
+        Back = capes.MagWS,
         Waist = 'Eschan Stone',
         Legs = jse.AF.Legs,
         Feet = jse.Empy.Feet,
@@ -208,15 +247,33 @@ local sets = T{
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Regal Ring',
         Ring2 = 'Etana Ring',
-        Back = 'Camulus\'s mantle',
+        Back = capes.MeleeTP,
         Waist = 'Sailfi Belt +1',
         Legs = 'Meg. Chausses +2',
         Feet = jse.AF.Feet,
     },
     tripleShot = {
+        Head = 'Oshosi Mask',
         Body = jse.Empy.Body,
-        -- Hands = jse.Relic.Hands,
-        -- Legs = 'Oshosi Trousers',
+        Hands = jse.Relic.Hands,
+        Back = capes.Midshot,
+        Legs = 'Oshosi Trousers',
+        Feet = 'Oshosi Leggings',
+    },
+    AccMidshot = {
+        Ammo = 'Chrono Bullet',
+        Head = jse.AF.Head,
+        Neck = 'Iskur Gorget',
+        Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
+        Ear2 = 'Enervating Earring',
+        Body = jse.AF.Body,
+        Hands = jse.Empy.Hands,
+        Ring1 = 'Regal Ring',
+        Ring2 = { Name = 'Murky Ring', AugPath='A' },
+        Back = capes.Midshot,
+        Waist = 'Eschan Stone',
+        Legs = jse.AF.Legs,
+        Feet = jse.Empy.Feet,
     },
 
 }
@@ -250,6 +307,16 @@ profile.OnLoad = function()
     });
 
     varhelper.CreateToggle('TH', false);
+    varhelper.CreateToggle('HighAcc', false);
+
+    -- varhelper.CreateToggle('DualWield', true);
+    varhelper.CreateCycle('WeaponSet', {
+        [1] = 'M_DaggerDW',
+        [2] = 'LM_DaggerDW',
+        [3] = 'M_SwordDW',
+        [4] = 'Naegling',
+        [5] = 'Lanun',
+    });
 
     varhelper.CreateCycle('FPS', {
         [1] = '30',
@@ -262,6 +329,8 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD0 /lac fwd TH');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD1 /lac fwd EXPcape');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD2 /lac fwd FPS');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD0 /lac fwd WeaponSet');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD1 /lac fwd HighAcc');
 end
 
 profile.OnUnload = function()
@@ -271,9 +340,12 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD0');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD1');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD2');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD0');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD1');
 end
 
 profile.HandleCommand = function(args)
+
     if (args[1] == 'DT') then
         varhelper.AdvanceCycle('DT');
     elseif (args[1] == expwarp.WarpCycle) then
@@ -284,6 +356,8 @@ profile.HandleCommand = function(args)
         varhelper.ResetCycle(expwarp.WarpCycle);
     elseif (args[1] == 'TH') then
         varhelper.AdvanceToggle('TH');
+    elseif (args[1] == 'HighAcc') then
+        varhelper.AdvanceToggle('HighAcc');
     elseif (args[1] == 'EXPcape') then
         varhelper.AdvanceToggle('EXPcape');
     elseif (args[1] == 'FPS') then
@@ -293,6 +367,8 @@ profile.HandleCommand = function(args)
         elseif (varhelper.GetCycle('FPS') == '60') then
             AshitaCore:GetChatManager():QueueCommand(-1, '/fps 1');
         end
+    elseif (args[1] == 'WeaponSet') then
+        varhelper.AdvanceCycle('WeaponSet');
     end
 end
 
@@ -301,7 +377,8 @@ profile.HandleDefault = function()
     local equip = gData.GetEquipment();
 
     gFunc.EquipSet(sets.Idle);
-    
+    gFunc.EquipSet(wsets[varhelper.GetCycle('WeaponSet')]);
+
     if (player.Status == 'Engaged') then
         if (varhelper.GetCycle('DT') == 'PDT') then
             gFunc.EquipSet(sets.PDT);
@@ -323,7 +400,7 @@ profile.HandleDefault = function()
     end
 
     if(IsInTown()) then
-        
+
     end
 
     if (varhelper.GetToggle('TH') == true) then
@@ -349,7 +426,7 @@ profile.HandleDefault = function()
     if (varhelper.GetToggle('EXPcape') == true) then
         gFunc.Equip('Back', capes['EXP']);
     end
-    
+
     varhelper.Update();
 end
 
@@ -371,9 +448,9 @@ profile.HandleAbility = function()
         end
     end
 
-    if (action.Name == 'Fold') then
-        gFunc.Equip('Hands', jse.Relic.Hands);
-    end
+    -- if (action.Name == 'Fold') then
+    --     gFunc.Equip('Hands', jse.Relic.Hands);
+    -- end
     if (action.Name == 'Snake Eye') then
         gFunc.Equip('Legs', jse.Relic.Legs);
     end
@@ -400,11 +477,15 @@ profile.HandlePreshot = function()
 end
 
 profile.HandleMidshot = function()
-    local action = gData.GetAction();
-    gFunc.EquipSet(sets.midshot);
+    local action = gData.GetAction()
 
+    if(varhelper.GetToggle("HighAcc") == true) then
+        gFunc.EquipSet(sets.AccMidshot);
+    else
+        gFunc.EquipSet(sets.midshot);
+    end
 
-    if (action.ActionType == "Ranged" and gData.GetBuffCount('Triple Shot') > 0) then
+    if (action.ActionType == "Ranged" and gData.GetBuffCount('Triple Shot') > 0 and varhelper.GetToggle("HighAcc") == false) then
         gFunc.EquipSet(sets.tripleShot);
     end
 end
@@ -414,6 +495,9 @@ profile.HandleWeaponskill = function()
     local val = actions[action.Name];
 
     if not val then gFunc.EquipSet(sets.DefaultWeaponskill) else gFunc.EquipSet(val) end
+    if(val == 'Last Stand' and varhelper.GetToggle("HighAcc") == true) then
+        gFunc.EquipSet(sets.AccMidshot);
+    end
     CheckCape();
 end
 
