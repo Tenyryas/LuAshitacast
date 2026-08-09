@@ -31,7 +31,7 @@ local jse = T{
         Body = '',
         Hands = '',
         Legs = '',
-        Feet = 'Heath. Sollerets +1'
+        Feet = 'Heath. Sollerets +3'
     }
 }
 
@@ -74,7 +74,7 @@ local sets = T{
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
         Ear1 = 'Cessance Earring',
         Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
-        Body = 'Valorous Mail',
+        Body = 'Sakpata\'s Plate',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Murky Ring',
         Ring2 = 'Petrov Ring',
@@ -84,7 +84,7 @@ local sets = T{
         Feet = 'Flam. Gambieras +2',
     },
     DefaultWeaponskill = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'TP Bonus +250'} },
@@ -96,10 +96,10 @@ local sets = T{
         Back = capes['STR'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     CrossReaper = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'TP Bonus +250'} },
@@ -111,25 +111,25 @@ local sets = T{
         Back = capes['STR'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     FotiaWS = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Flam. Zucchetto +2',
         Neck = 'Abyssal Beads +1',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'TP Bonus +250'} },
         Ear2 = 'Thrud Earring',
-        Body = { Name = 'Valorous Mail', Augment = { [1] = 'Accuracy+37', [2] = 'Crit.hit rate+3', [3] = 'Attack+22', [4] = 'DEX+7' } },
+        Body = 'Sakpata\'s Plate',
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
         Ring2 = 'Petrov Ring',
         Back = capes['STR'],
         Waist = 'Fotia Belt',
         Legs = jse.Relic.Legs,
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     Torcleaver = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'TP Bonus +250'} },
@@ -141,7 +141,7 @@ local sets = T{
         Back = capes['VIT'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     Drain = {
         Ammo = 'Seeth. Bomblet +1',
@@ -204,7 +204,7 @@ local sets = T{
         Feet = 'Flam. Gambieras +2',
     },
     SavBlade = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Ratri Sallet',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
         Ear1 = 'Thrud Earring',
@@ -216,7 +216,7 @@ local sets = T{
         Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'Weapon skill damage +10%' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = { Name = 'Fall. Flanchard +4', AugTrial=5633 },
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     TH = {
         Ammo = 'Per. Lucky Egg',
@@ -239,7 +239,7 @@ local sets = T{
         Feet = 'Sulev. Leggings +2',
     },
     Catastrophe = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = 'Ratri Sallet',
         Neck = 'Abyssal Beads +1',
         Ear1 = 'Thrud Earring',
@@ -251,10 +251,10 @@ local sets = T{
         Back = capes['STR'],
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = jse.Relic.Legs,
-        Feet = 'Sulev. Leggings +2',
+        Feet = jse.Empy.Feet,
     },
     Shockwave = {
-        Ammo = 'Seeth. Bomblet +1',
+        Ammo = 'Oshasha\'s Treatise',
         Head = jse.Relic.Head,
         Neck = 'Abyssal Beads +1',
         Ear1 = 'Thrud Earring',
@@ -266,7 +266,7 @@ local sets = T{
         Back = capes['STR'],
         Waist = "Fotia Belt",
         Legs = jse.Relic.Legs,
-        Feet = "Sulev. Leggings +2",
+        Feet = jse.Empy.Feet,
     },
     Lockstyle = {
         Main = 'Beorc Sword',
@@ -296,11 +296,11 @@ local sets = T{
 local actions = {
     ["Savage Blade"] = sets.FotiaWS,
     ["Torcleaver"] = sets.Torcleaver,
-    ["Cross Reaper"] = sets.Crossreaper,
+    ["Cross Reaper"] = sets.CrossReaper,
     ["Catastrophe"] = sets.Catastrophe,
     ["Shockwave"] = sets.Shockwave,
     ["Resolution"] = sets.FotiaWS,
-    ["Ground Strike"] = sets.FotiaWS,
+    ["Ground Strike"] = sets.Torcleaver,
     ["Qietus"] = sets.FotiaWS,
     ["Entropy"] = sets.FotiaWS,
     ["Insurgency"] = sets.FotiaWS
@@ -390,7 +390,7 @@ profile.HandleDefault = function()
 
     if (equip.Main ~= nil) then
         if (isTwoHanded(equip.Main.Name) and equip.Sub == nil) then
-            gFunc.Equip('Sub', 'Kaja Grip');
+            gFunc.Equip('Sub', 'Khonsu');
         end
     end
 
