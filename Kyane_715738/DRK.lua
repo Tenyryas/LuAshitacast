@@ -15,7 +15,7 @@ local capes = {
 
 local jse = T{
     AF = { 
-        Head = 'Ignominy Burgeonet', 
+        Head = 'Ignominy Burgeonet +1', 
         Body = 'Ig. Cuirass +4', 
         Hands = '', 
         Legs = 'Ig. Flanchard +3', 
@@ -43,7 +43,7 @@ local sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Elite Royal Collar',
         Ear1 = 'Alabaster Earring',
-        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
+        Ear2 = 'Heath. Earring +1',
         Body = 'Sakpata\'s Plate',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Murky Ring',
@@ -58,7 +58,7 @@ local sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
         Ear1 = 'Alabaster Earring',
-        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
+        Ear2 = 'Heath. Earring +1',
         Body = 'Sakpata\'s Plate',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Murky Ring',
@@ -73,7 +73,7 @@ local sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
         Ear1 = 'Cessance Earring',
-        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
+        Ear2 = 'Heath. Earring +1',
         Body = 'Sakpata\'s Plate',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Murky Ring',
@@ -83,16 +83,31 @@ local sets = T{
         Legs = 'Sakpata\'s Cuisses',
         Feet = 'Flam. Gambieras +2',
     },
+    TPacc = {
+        Ammo = 'Seeth. Bomblet +1',
+        Head = 'Flam. Zucchetto +2',
+        Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
+        Ear1 = 'Cessance Earring',
+        Ear2 = 'Alabaster Earring',
+        Body = jse.AF.Body,
+        Hands = 'Sakpata\'s Gauntlets',
+        Ring1 = 'Murky Ring',
+        Ring2 = 'Regal Ring',
+        Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
+        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+        Legs = jse.AF.Legs,
+        Feet = 'Flam. Gambieras +2',
+    },
     DefaultWeaponskill = {
         Ammo = 'Oshasha\'s Treatise',
-        Head = 'Ratri Sallet',
+        Head = 'Nyame Helm',
         Neck = 'Abyssal Beads +1',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = '"Mag. Atk. Bns."+4', [2] = 'TP Bonus +250'} },
         Ear2 = 'Thrud Earring',
         Body = jse.AF.Body,
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['STR'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
@@ -107,7 +122,7 @@ local sets = T{
         Body = jse.AF.Body,
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['STR'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
@@ -122,7 +137,7 @@ local sets = T{
         Body = 'Sakpata\'s Plate',
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['STR'],
         Waist = 'Fotia Belt',
         Legs = jse.Relic.Legs,
@@ -137,7 +152,7 @@ local sets = T{
         Body = jse.AF.Body,
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['VIT'],
         Waist = 'Sailfi Belt +1',
         Legs = jse.Relic.Legs,
@@ -184,7 +199,7 @@ local sets = T{
         Ring1 = 'Etana Ring',
         Ring2 = 'Moonbeam Ring',
         Back = { Name = 'Niht Mantle', Augment = { [1] = 'Dark magic skill +10', [2] = 'Attack+10', [3] = '"Drain" and "Aspir" potency +17' } },
-        Waist = 'Eschan Stone',
+        Waist = 'Plat. Mog. Belt',
         Legs = { Name = 'Eschite Cuisses', AugPath='D' },
         Feet = 'Ratri Sollerets',
     },
@@ -195,7 +210,7 @@ local sets = T{
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
         Body = jse.Relic.Body,
-        Hands = jse.Relic.Hands,
+        Hands = 'Leyline Gloves',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Mujin Band',
         Back = { Name = 'Niht Mantle', Augment = { [1] = 'Dark magic skill +10', [2] = 'Attack+10', [3] = '"Drain" and "Aspir" potency +17' } },
@@ -212,7 +227,7 @@ local sets = T{
         Body = 'Ig. Cuirass +4',
         Hands = { Name = 'Odyssean Gauntlets', Augment = { [1] = 'Attack+18', [2] = 'STR+1', [3] = 'Weapon skill damage +9%', [4] = 'MND+7', [5] = 'Accuracy+18' } },
         Ring1 = 'Regal Ring',
-        Ring2 = { Name = 'Murky Ring', AugPath='A' },
+        Ring2 = 'Ephramad\'s Ring',
         Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'Weapon skill damage +10%' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = { Name = 'Fall. Flanchard +4', AugTrial=5633 },
@@ -220,7 +235,7 @@ local sets = T{
     },
     TH = {
         Ammo = 'Per. Lucky Egg',
-        Head = 'Wh. Rarab Cap +1',
+        Body = 'Valorous Mail',
         Waist = 'Chaac Belt',
     },
     DTacc = {
@@ -247,7 +262,7 @@ local sets = T{
         Body = jse.AF.Body,
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['STR'],
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = jse.Relic.Legs,
@@ -262,7 +277,7 @@ local sets = T{
         Body = jse.AF.Body,
         Hands = 'Odyssean Gauntlets',
         Ring1 = 'Regal Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes['STR'],
         Waist = "Fotia Belt",
         Legs = jse.Relic.Legs,
@@ -270,7 +285,7 @@ local sets = T{
     },
     Lockstyle = {
         Main = 'Beorc Sword',
-        Sub = 'Umbra Strap',
+        Sub = 'Daduchos Strap',
         Head = 'Eyepatch',
         Body = 'Bellicus cuirass',
         Hands = 'Bellicus dastanas',
@@ -280,9 +295,9 @@ local sets = T{
     TownIdle = {
         Ammo = 'Coiste Bodhar',
         Head = { Name = 'Fall. Burgeonet +3', AugTrial=5457 },
-        Neck = { Name = 'Abyssal Beads +1', AugPath='A' },
+        Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'TP Bonus +250', [2] = '"Mag. Atk. Bns."+4' } },
-        Ear2 = { Name = 'Heath. Earring +1', Augment = { [1] = 'Accuracy+11', [2] = 'Weapon skill damage +2%', [3] = 'Mag. Acc.+11' } },
+        Ear2 = 'Heath. Earring +1',
         Body = 'Ig. Cuirass +4',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = { Name = 'Murky Ring', AugPath='A' },
@@ -333,21 +348,16 @@ profile.OnLoad = function()
         [1] = 'Off',
         [2] = 'PDT',
         [3] = 'DTacc',
+        [4] = "TPacc"
     });
 
     varhelper.CreateToggle('TH', false);
-
-    varhelper.CreateCycle('FPS', {
-        [1] = '30',
-        [2] = '60',
-    });
 
     varhelper.CreateToggle('EXPcape', false);
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^F1 /lac fwd DT');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD0 /lac fwd TH');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD1 /lac fwd EXPcape');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD2 /lac fwd FPS');
     gFunc.LockStyle(sets.Lockstyle);
 end
 
@@ -357,7 +367,6 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^F1');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD0');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD1');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD2');
 end
 
 profile.HandleCommand = function(args)
@@ -373,13 +382,6 @@ profile.HandleCommand = function(args)
         varhelper.AdvanceToggle('TH');
     elseif (args[1] == 'EXPcape') then
         varhelper.AdvanceToggle('EXPcape');
-    elseif (args[1] == 'FPS') then
-        varhelper.AdvanceCycle('FPS');
-        if(varhelper.GetCycle('FPS') == '30') then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/fps 2');
-        elseif (varhelper.GetCycle('FPS') == '60') then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/fps 1');
-        end
     end
 
 end
@@ -390,15 +392,20 @@ profile.HandleDefault = function()
 
     if (equip.Main ~= nil) then
         if (isTwoHanded(equip.Main.Name) and equip.Sub == nil) then
-            gFunc.Equip('Sub', 'Khonsu');
+            -- gFunc.Equip('Sub', 'Khonsu');
+            gFunc.Equip('Sub', 'Daduchos Grip');
         end
     end
+
+    -- gFunc.Message("test");
 
     if (player.Status == 'Engaged') then
         if (varhelper.GetCycle('DT') == 'PDT') then
             gFunc.EquipSet(sets.PDT);
         elseif (varhelper.GetCycle('DT') == 'DTacc') then
             gFunc.EquipSet(sets.DTacc);
+        elseif (varhelper.GetCycle('DT') == 'TPacc') then
+            gFunc.EquipSet(sets.TPacc);
         else
             gFunc.EquipSet(sets.TP);
         end
@@ -409,6 +416,8 @@ profile.HandleDefault = function()
             gFunc.EquipSet(sets.PDT);
         elseif (varhelper.GetCycle('DT') == 'DTacc') then
             gFunc.EquipSet(sets.DTacc);
+        elseif (varhelper.GetCycle('DT') == 'TPacc') then
+            gFunc.EquipSet(sets.TPacc);
         else
             gFunc.EquipSet(sets.Idle);
         end
