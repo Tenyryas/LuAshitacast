@@ -49,29 +49,6 @@ local weapons = T{
     Nusku = 'Nusku Shield'
 }
 
-local wsets = T{
-    M_DaggerDW = T{
-        Main = weapons.Tauret,
-        Sub = weapons.Daduchos
-    },
-    LM_DaggerDW = T{
-        Main = weapons.LanunRoll,
-        Sub = weapons.Daduchos
-    },
-    M_SwordDW = T{
-        Main = weapons.Naegling,
-        Sub = weapons.Daduchos
-    },
-    Naegling = T{
-        Main = weapons.Naegling,
-        Sub = weapons.Nusku
-    },
-    Lanun = T{
-        Main = weapons.LanunRoll,
-        Sub = weapons.Nusku
-    },
-}
-
 local sets = T{
     Idle = {
         Range = 'Fomalhaut',
@@ -387,12 +364,7 @@ profile.HandleDefault = function()
 
     gFunc.EquipSet(sets.Idle);
     gFunc.Equip('Main', weapons[varhelper.GetCycle('WeaponMain')]);
-    if(player.SubJob == 'NIN' or player.SubJob == 'DNC') then
-        gFunc.Equip('Sub', weapons[varhelper.GetCycle('WeaponSub')]);
-    else
-        varhelper.SetCycle('WeaponSub', 5);
-        gFunc.Equip('Sub', weapons[varhelper.GetCycle('WeaponSub')]);
-    end
+    gFunc.Equip('Sub', weapons[varhelper.GetCycle('WeaponSub')]);
 
     if (player.Status == 'Engaged') then
         if (varhelper.GetCycle('DT') == 'PDT') then
