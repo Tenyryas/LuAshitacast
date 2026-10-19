@@ -4,6 +4,8 @@ local varhelper = gFunc.LoadFile('common/varhelper.lua');
 local expwarp = gFunc.LoadFile('common/expwarphelper.lua');
 local common = gFunc.LoadFile('common/commonfunc.lua');
 
+local equip = gData.GetEquipment();
+
 local macros = require 'ffxi.macros';
 
 local capes = T{
@@ -15,10 +17,10 @@ local capes = T{
 
 local jse = T{
     AF = {
-        Head = 'Laksa. Tricorne +3',
+        Head = 'Laksa. Tricorne +4',
         Body = 'Laksa. Frac +4',
         Hands = '',
-        Legs = 'Laksa. Trews +3',
+        Legs = 'Laksa. Trews +4',
         Feet = ''
     },
     Relic = {
@@ -33,7 +35,7 @@ local jse = T{
         Body = 'Chasseur\'s Frac +2',
         Hands = 'Chasseur\'s Gants +3',
         Legs = 'Chas. Culottes +2',
-        Feet = 'Chass. Bottes +2'
+        Feet = 'Chass. Bottes +3'
     }
 }
 
@@ -121,7 +123,7 @@ local sets = T{
     },
     Roll = {
         Main = weapons.LanunRoll,
-        Range = weapons.Compensator,
+        -- Range = weapons.Compensator,
         Head =  jse.Relic.Head,
         Hands = jse.Empy.Hands,
         Ring1 = "Luzaf's Ring",
@@ -244,13 +246,13 @@ local sets = T{
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Ishvara Earring',
         Body = jse.AF.Body,
-        Hands = 'Meg. Gloves +2',
+        Hands = jse.Empy.Hands,
         Ring1 = 'Regal Ring',
-        Ring2 = 'Etana Ring',
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes.MeleeTP,
         Waist = 'Sailfi Belt +1',
         Legs = 'Meg. Chausses +2',
-        Feet = jse.AF.Feet,
+        Feet = jse.Relic.Feet,
     },
     tripleShot = {
         Head = 'Oshosi Mask',
@@ -269,7 +271,7 @@ local sets = T{
         Body = jse.AF.Body,
         Hands = jse.Empy.Hands,
         Ring1 = 'Regal Ring',
-        Ring2 = { Name = 'Murky Ring', AugPath='A' },
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes.Midshot,
         Waist = 'Eschan Stone',
         Legs = jse.AF.Legs,
@@ -310,17 +312,18 @@ profile.OnLoad = function()
     varhelper.CreateToggle('HighAcc', false);
 
     -- varhelper.CreateToggle('DualWield', true);
-    varhelper.CreateCycle('WeaponSet', {
-        [1] = 'M_DaggerDW',
-        [2] = 'LM_DaggerDW',
-        [3] = 'M_SwordDW',
+    varhelper.CreateCycle('WeaponMain', {
+        [1] = 'LanunRoll',
+        [2] = 'Tauret',
+        [3] = 'Daduchos',
         [4] = 'Naegling',
-        [5] = 'Lanun',
     });
-
-    varhelper.CreateCycle('FPS', {
-        [1] = '30',
-        [2] = '60',
+    varhelper.CreateCycle('WeaponSub', {
+        [1] = 'Naegling',
+        [2] = 'Tauret',
+        [3] = 'LanunRoll',
+        [4] = 'Daduchos',
+        [5] = 'Nusku'
     });
 
     varhelper.CreateToggle('EXPcape', false);
@@ -328,9 +331,9 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^F1 /lac fwd DT');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD0 /lac fwd TH');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD1 /lac fwd EXPcape');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^NUMPAD2 /lac fwd FPS');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD0 /lac fwd WeaponSet');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD1 /lac fwd HighAcc');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD1 /lac fwd WeaponMain');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD2 /lac fwd WeaponSub');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^!NUMPAD0 /lac fwd HighAcc');
 end
 
 profile.OnUnload = function()
@@ -339,12 +342,13 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^F1');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD0');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD1');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^NUMPAD2');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD0');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD2');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD1');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^!NUMPAD0');
 end
 
 profile.HandleCommand = function(args)
+    local player = gData.GetPlayer();
 
     if (args[1] == 'DT') then
         varhelper.AdvanceCycle('DT');
@@ -360,24 +364,35 @@ profile.HandleCommand = function(args)
         varhelper.AdvanceToggle('HighAcc');
     elseif (args[1] == 'EXPcape') then
         varhelper.AdvanceToggle('EXPcape');
-    elseif (args[1] == 'FPS') then
-        varhelper.AdvanceCycle('FPS');
-        if(varhelper.GetCycle('FPS') == '30') then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/fps 2');
-        elseif (varhelper.GetCycle('FPS') == '60') then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/fps 1');
+    elseif (args[1] == 'WeaponMain') then
+        varhelper.AdvanceCycle('WeaponMain');
+        if (varhelper.GetCycle('WeaponMain') == varhelper.GetCycle('WeaponSub')) then
+            varhelper.AdvanceCycle('WeaponMain');
         end
-    elseif (args[1] == 'WeaponSet') then
-        varhelper.AdvanceCycle('WeaponSet');
+    elseif (args[1] == 'WeaponSub') then
+
+        if(player.SubJob == 'NIN' or player.SubJob == 'DNC') then
+            varhelper.AdvanceCycle('WeaponSub');
+        else
+            varhelper.SetCycle('WeaponSub', 5);
+        end
+        if (varhelper.GetCycle('WeaponMain') == varhelper.GetCycle('WeaponSub')) then
+            varhelper.AdvanceCycle('WeaponSub');
+        end
     end
 end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
-    local equip = gData.GetEquipment();
 
     gFunc.EquipSet(sets.Idle);
-    gFunc.EquipSet(wsets[varhelper.GetCycle('WeaponSet')]);
+    gFunc.Equip('Main', weapons[varhelper.GetCycle('WeaponMain')]);
+    if(player.SubJob == 'NIN' or player.SubJob == 'DNC') then
+        gFunc.Equip('Sub', weapons[varhelper.GetCycle('WeaponSub')]);
+    else
+        varhelper.SetCycle('WeaponSub', 5);
+        gFunc.Equip('Sub', weapons[varhelper.GetCycle('WeaponSub')]);
+    end
 
     if (player.Status == 'Engaged') then
         if (varhelper.GetCycle('DT') == 'PDT') then
@@ -406,13 +421,6 @@ profile.HandleDefault = function()
     if (varhelper.GetToggle('TH') == true) then
         gFunc.EquipSet(sets.TH);
     end
-
-    -- if (player.Status == 'Engaged') then
-    --     local mob = gData.GetTarget();
-    --     if(player.TP > 1000 and mob.HPP <= 60) then
-    --         AshitaCore:GetChatManager():QueueCommand(-1, '/ws Catastrophe <t>');
-    --     end
-    -- end
 
     -- Warp items
     expwarp.Cycle(expwarp.Warp, varhelper);
