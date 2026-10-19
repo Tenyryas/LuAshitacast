@@ -40,6 +40,18 @@ varhelper.AdvanceCycle = function(name)
 	end
 end
 
+varhelper.SetCycle =  function(name, number)
+	local ctable = Cycles[name];
+	if (type(ctable) ~= 'table') then
+		return;
+	end
+	
+	ctable.Index = number;
+	if (ctable.Index > #ctable.Array) then
+		ctable.Index = 1;
+	end
+end
+
 varhelper.ResetCycle = function(name)
 	local ctable = Cycles[name];
 	if (type(ctable) ~= 'table') then
