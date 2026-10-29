@@ -53,7 +53,7 @@ local sets = T{
     Idle = {
         Range = 'Fomalhaut',
         Head = 'Malignance Chapeau',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
         Ear2 = 'Cassie Earring',
         Body = 'Malignance Tabard',
@@ -67,7 +67,7 @@ local sets = T{
     },
     DT = {
         Head = 'Malignance Chapeau',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Alabaster Earring', AugPath='A' },
         Ear2 = 'Cessance Earring',
         Body = 'Malignance Tabard',
@@ -91,7 +91,7 @@ local sets = T{
         Back = capes.MeleeTP,
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = jse.Empy.Legs,
-        Feet = jse.Empy.Feet,
+        Feet = 'Nyame Sollerets',
     },
     TH = {
         Ammo = 'Per. Lucky Egg',
@@ -111,7 +111,7 @@ local sets = T{
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Friomisi Earring',
         Body = jse.Relic.Body,
-        Hands = jse.Empy.Hands,
+        Hands = 'Nyame Gauntlets',
         Ring1 = "Archon Ring",
         Ring2 = 'Dingir Ring',
         Back = capes.MagWS,
@@ -124,10 +124,10 @@ local sets = T{
         Neck = 'Comm. Charm +2',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Friomisi Earring',
-        Body = jse.AF.Body,
+        Body = 'Nyame Mail',
         Hands = jse.Empy.Hands,
-        Ring1 = "Archon Ring",
-        Ring2 = 'Dingir Ring',
+        Ring1 = "Dingir Ring",
+        Ring2 = 'Ephramad\'s Ring',
         Back = capes.MagWS,
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
@@ -139,7 +139,7 @@ local sets = T{
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Hecate\'s Earring',
         Body = jse.Relic.Body,
-        Hands = jse.Empy.Hands,
+        Hands = 'Nyame Gauntlets',
         Ring1 = "Archon Ring",
         Ring2 = 'Dingir Ring',
         Back = capes.MagWS,
@@ -149,7 +149,7 @@ local sets = T{
     },
     LastStand = {
         Head = jse.Relic.Head,
-        Neck = 'Sanctity Necklace',
+        Neck = 'Comm. Charm +2',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Ishvara Earring',
         Body = jse.AF.Body,
@@ -218,7 +218,7 @@ local sets = T{
         Feet = jse.Empy.Feet,
     },
     SavBlade = {
-        Head = 'Meghanada Visor +2',
+        Head = 'Nyame Helm',
         Neck = 'Rep. Plat. Medal',
         Ear1 = 'Moonshade Earring',
         Ear2 = 'Ishvara Earring',
@@ -228,7 +228,7 @@ local sets = T{
         Ring2 = 'Ephramad\'s Ring',
         Back = capes.MeleeTP,
         Waist = 'Sailfi Belt +1',
-        Legs = 'Meg. Chausses +2',
+        Legs = 'Nyame Flanchard',
         Feet = jse.Relic.Feet,
     },
     tripleShot = {
@@ -254,6 +254,20 @@ local sets = T{
         Legs = jse.AF.Legs,
         Feet = jse.Empy.Feet,
     },
+    DefaultWeaponskill = {
+        Head = 'Nyame Helm',
+        Neck = 'Rep. Plat. Medal',
+        Ear1 = 'Moonshade Earring',
+        Ear2 = 'Ishvara Earring',
+        Body = jse.AF.Body,
+        Hands = jse.Empy.Hands,
+        Ring1 = 'Regal Ring',
+        Ring2 = 'Ephramad\'s Ring',
+        Back = capes.MeleeTP,
+        Waist = 'Sailfi Belt +1',
+        Legs = 'Nyame Flanchard',
+        Feet = jse.Relic.Feet,
+    }
 
 }
 profile.Sets = sets;
